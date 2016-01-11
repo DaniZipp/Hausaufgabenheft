@@ -26,9 +26,7 @@ public class Window {
 		_frame.setResizable(true);
 		_frame.setVisible(true);
 		_frame.setLayout(null);
-		
-		
-		
+		_frame.pack();
 		
 		_object.init();
 		_object.show(_frame);
