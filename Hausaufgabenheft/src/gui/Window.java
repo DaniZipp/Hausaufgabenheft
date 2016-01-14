@@ -13,9 +13,9 @@ public class Window {
 	private JFrame _frame;
 	
 	
-	public Dimension _size = new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);		//erstellen von _size zur leichteren Einstellung
+	private Dimension _size = new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);		//erstellen von _size zur leichteren Einstellung
 
-	Object _object = new Object();	//erstellen des _object (benötigt für Zugriff auf Klasse Object)
+	Menu _menu = new Menu();	//erstellen des _object (benötigt für Zugriff auf Klasse Object)
 	Day _day = new Day();
 
 
@@ -28,8 +28,8 @@ public class Window {
 		_frame.setLayout(null);
 		_frame.pack();
 		
-		_object.init();
-		_object.show(_frame);
+		_menu.init();
+		_menu.show(_frame);
 		
 		_day.init();
 		_day.show(_frame);
