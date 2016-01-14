@@ -11,6 +11,17 @@ public class Main {
 
 		window.init("Hausaufgabenheft");
 		
+		
+		while(true){
+			try {
+				Thread.sleep(16);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			window.update();
+			
+		}
 
 	}
 

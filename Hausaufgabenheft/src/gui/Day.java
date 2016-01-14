@@ -6,60 +6,81 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class Day {
+public class Day extends JPanel {
 
-	data.test test = new data.test();
+	private int high = 30;
+	private int y;
+	private boolean status = true;
+	
 
-	private JLabel[] ac_day = new JLabel[5];
-	private JPanel[] day = new JPanel[5];
-	private JButton[] add = new JButton[5];
+	private JLabel ac_day;
+	private JButton add;
+	
+	public Day(String day_name, String day_date, int y) {
+		
+			this.y = y;
 
-	int y = 35;
-	int[] h = { 30, 30, 30, 30, 30 };
+			setLayout(null);
+			setBounds(0, y, Toolkit.getDefaultToolkit().getScreenSize().width, high);
+			setBackground(Color.GRAY);
+			
+			ac_day = new JLabel(day_name + " " + day_date);
+			ac_day.setForeground(Color.BLUE);
+			ac_day.setBounds(10, 5, 120, 20);
 
-	public void init() {
-
-		for (int d = 0; d <= 4; d++) {
-
-			day[d] = new JPanel();
-			day[d].setLayout(null);
-			day[d].setBounds(0, y, Toolkit.getDefaultToolkit().getScreenSize().width, h[d]);
-			day[d].setBackground(Color.GRAY);
-			day[d].setVisible(true);
-
-			ac_day[d] = new JLabel(test.day[d] + " " + test.date[d]);
-			ac_day[d].setForeground(Color.BLUE);
-			ac_day[d].setBounds(10, 5, 120, 20);
-
-			add[d] = new JButton("Hausaufgabe hinzufügen");
-			add[d].setBackground(Color.GRAY);
-			add[d].setForeground(Color.BLUE);
-			add[d].setBounds(140, 5, 200, 20);
-			add[d].addActionListener(new ActionListener() {
-
-				@Override
+			add = new JButton("Hausaufgabe hinzufügen");
+			add.setBackground(Color.GRAY);
+			add.setForeground(Color.BLUE);
+			add.setBounds(140, 5, 200, 20);
+			add.addActionListener(new ActionListener() {
+				
 				public void actionPerformed(ActionEvent event) {
+					if(status == true){
+						addWork1();
+						status = false;
+					}else{
+						addWork2();
+					}
 					
 					
-				}
+				}	
 			});
 
-			day[d].add(ac_day[d]);
-			day[d].add(add[d]);
+			add(ac_day);
+			add(add);
 
-			y = y + h[d] + 5;
-		}
-
-	};
-
-	public void show(JFrame frame) {
-		for (int d = 0; d <= 4; d++) {
-			frame.add(day[d]);
-		}
+			setVisible(true);
 	};
 	
+	private JLabel subject;
+	private JLabel work;
+	
+	private void addWork1(){
+		high += 30;
+		setSize(Toolkit.getDefaultToolkit().getScreenSize().width, high);
+		
+		subject = new JLabel("Fach");
+		subject.setBounds(10, 30, 80, 20);
+		add(subject);
+		
+		work = new JLabel("Hausaufgabe");
+		work.setBounds(100, 30, 120, 20);
+		add(work);
+	}
+	
+	private JTextField sub_text;
+	private JTextField work_text;
+	
+	private void addWork2(){
+		high += 30;
+		setSize(Toolkit.getDefaultToolkit().getScreenSize().width, high);
+		
+		sub_text = new JTextField();
+		
+	}
+
 }
